@@ -1,18 +1,17 @@
 
 const express = require('express');
 var handlebars = require('express-handlebars');
-const app = express();
+const route = require('./src/routes');
+
 const path = require('path');
+const app = express();
 const port = 3000;
 
-
-// // Import service app
-// const serviceApp = require('./service');
-
-// // Sử dụng các route từ serviceApp
-// app.use(serviceApp);
-
 app.use(express.static('src/public'));
+app.use(express.urlencoded({ extended: true })); //log data object
+app.use(express.json());
+
+route(app);
 
 //template engine
 app.engine('hbs', handlebars({
@@ -21,18 +20,7 @@ app.engine('hbs', handlebars({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src\\resources\\views'));
 
-app.get('/', (req, res) => {
-    res.render('home');
-});
 
-app.get('/news', (req, res) => {
-    res.render('news');
-});
-
-app.get('/search', (req, res) => {
-    console.log(req.query.q);
-    res.render('search');
-});
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
