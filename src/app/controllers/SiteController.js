@@ -1,7 +1,6 @@
-
 class SiteController {
 
-    home(req, res) {
+    home(req, res, next) {
         res.render('home');
     }
 
