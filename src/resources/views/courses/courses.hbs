@@ -1,7 +1,15 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-12 d-flex align-items-center justify-content-end">
+      <button type="button" class="btn btn-info"><a
+          class="d-flex align-items-center justify-content-center gap-2 fw-bold"
+          href="/courses/create"
+        ><i class="fa-solid fa-plus"></i>Create Courses</a></button>
+    </div>
+  </div>
   <div class="row">
     {{#each courses}}
-      <div class="col-6 col-lg-4 mt-5">
+      <div class="col-6 col-lg-4 mb-3">
         <div class="card">
           <a href="/courses/{{this.slug}}">
             <img src="{{this.image}}" class="card-img-top" alt="..." />
@@ -11,6 +19,7 @@
               <h5 class="card-title">{{this.name}}</h5>
               <p class="card-text">{{this.desc}}</p>
             </a>
+            <button class="btn btn-primary my-3 mx-0">Edit Courses</button>
           </div>
         </div>
       </div>
