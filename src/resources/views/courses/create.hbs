@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row mb-3">
+    <div class="col-12">
+      <h2 class="mb-3 text-center">Create Courses</h2>
+      <form method="POST" action="/courses/store_courses">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" name="name" />
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label">Description</label>
+          <input type="text" class="form-control" id="desc" name="desc" />
+        </div>
+        <div class="mb-3">
+          <label for="videoId" class="form-label">Video ID</label>
+          <input type="text" class="form-control" id="videoId" name="videoId" />
+        </div>
+        <div class="mb-3">
+          <label for="level" class="form-label">Level</label>
+          <input type="text" class="form-control" id="level" name="level" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

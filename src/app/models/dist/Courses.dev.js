@@ -2,19 +2,31 @@
 
 var mongoose = require('mongoose');
 
+var slug = require('mongoose-slug-generator');
+
 var Schema = mongoose.Schema;
-var Course = new Schema({
+var CourseSchema = new Schema({
   name: {
     type: String,
-    "default": 'None!'
+    required: true
   },
   image: {
-    type: String,
-    "default": ''
+    type: String
   },
   desc: {
+    type: String
+  },
+  videoId: {
+    type: String
+  },
+  level: {
+    type: String
+  },
+  slug: {
     type: String,
-    "default": ''
+    slug: 'name'
   }
+}, {
+  timestamps: true
 });
-module.exports = mongoose.model('Course', Course);
+module.exports = mongoose.model('Course', CourseSchema);

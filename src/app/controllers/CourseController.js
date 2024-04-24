@@ -9,12 +9,33 @@ class CourseController {
         }).catch(next);
     }
 
+    //[GET] /courses
     list_courses(req, res, next) {
         Course.find({}).then((courses) => {
             res.render('courses/courses', {
                 courses: multipleMongooseToObject(courses)
             });
         }).catch(next);
+    }
+
+    //[GET] /courses/create
+    create_courses(req, res, next) {
+        res.render('courses/create');
+    }
+
+    //[POST] /courses/store
+    store_courses(req, res, next) {
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+        const courses = new Course(formData);
+        courses.save().then(() => {
+            res.redirect('/courses');
+        }).catch(next);
+    }
+
+    //[POST] /courses/update
+    update_courses(req, res, next) {
+
     }
 
 }

@@ -30,7 +30,8 @@ function () {
           course: mongooseToObject(course)
         });
       })["catch"](next);
-    }
+    } //[GET] /courses
+
   }, {
     key: "list_courses",
     value: function list_courses(req, res, next) {
@@ -39,7 +40,28 @@ function () {
           courses: multipleMongooseToObject(courses)
         });
       })["catch"](next);
-    }
+    } //[GET] /courses/create
+
+  }, {
+    key: "create_courses",
+    value: function create_courses(req, res, next) {
+      res.render('courses/create');
+    } //[POST] /courses/store
+
+  }, {
+    key: "store_courses",
+    value: function store_courses(req, res, next) {
+      var formData = req.body;
+      formData.image = "https://img.youtube.com/vi/".concat(req.body.videoId, "/sddefault.jpg");
+      var courses = new Course(formData);
+      courses.save().then(function () {
+        res.redirect('/courses');
+      })["catch"](next);
+    } //[POST] /courses/update
+
+  }, {
+    key: "update_courses",
+    value: function update_courses(req, res, next) {}
   }]);
 
   return CourseController;
